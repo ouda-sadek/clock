@@ -1,5 +1,13 @@
 import time
 
+#initialize time
+print ("00:00:00")
+
+# Get the time from user input in the format hh:mm:ss
+valeurs = input("Enter hours, minutes and seconds in the format hh:mm:ss: ").split(":")
+hours = int(valeurs[0])
+minutes = int(valeurs[1])
+seconds = int(valeurs[2])
 # Function to set and display the time
 def display_time(hours, minutes, seconds):
         try:
@@ -36,4 +44,4 @@ def display_time(hours, minutes, seconds):
 
 
 # Call the function to display and update the time
-display_time(16, 58, 55)
+display_time(hours, minutes, seconds)
