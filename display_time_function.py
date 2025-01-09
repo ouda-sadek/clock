@@ -8,8 +8,21 @@ valeurs = input("Enter hours, minutes and seconds in the format hh:mm:ss: ").spl
 hours = int(valeurs[0])
 minutes = int(valeurs[1])
 seconds = int(valeurs[2])
+
+# Get the alarm_time from user input in the format hh:mm:ss
+alarm_time = input("Enter alarm_time_hours, alarm_time_minutes and alarm_time_seconds in the format hh:mm:ss: ").split(":")
+alarm_time_hours = int(alarm_time[0])
+alarm_time_minutes = int(alarm_time[1])
+alarm_time_seconds = int(alarm_time[2])
+
+#function to check alarm_time 
+def check_alarm_time(alarm_time, hours, minutes, seconds):
+   if (hours == alarm_time_hours and minutes == alarm_time_minutes and seconds == alarm_time_seconds):
+        return True
+   return False
+
 # Function to set and display the time
-def display_time(hours, minutes, seconds):
+def display_time(hours, minutes, seconds, alarm_time):
         try:
             while True:
                 # Format the time as hh:mm:ss
@@ -17,6 +30,11 @@ def display_time(hours, minutes, seconds):
             
                 # Display the time, overwriting the previous line
                 print(formatted_time, end="\r", flush=True)
+
+                # Check if the current time matches the alarm time
+                if check_alarm_time(alarm_time, hours, minutes, seconds):
+                    print("\nALARM! Time to wake up, Mamie Jeannine!")
+                    #break
             
                 # Increment the seconds
                 seconds += 1
@@ -44,4 +62,4 @@ def display_time(hours, minutes, seconds):
 
 
 # Call the function to display and update the time
-display_time(hours, minutes, seconds)
+display_time(hours, minutes, seconds, alarm_time)
