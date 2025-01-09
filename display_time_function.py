@@ -33,7 +33,10 @@ def display_time(hours, minutes, seconds, alarm_time):
 
                 # Check if the current time matches the alarm time
                 if check_alarm_time(alarm_time, hours, minutes, seconds):
-                    print("\nALARM! Time to wake up, Mamie Jeannine!")
+                    for _ in range(5):
+                        print("ALARM! Time to wake up, Mamie Jeannine!")
+                    
+
                     #break
             
                 # Increment the seconds
