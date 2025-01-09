@@ -4,10 +4,10 @@ import time
 print ("00:00:00")
 
 # Get the time from user input in the format hh:mm:ss
-valeurs = input("Enter hours, minutes and seconds in the format hh:mm:ss: ").split(":")
-hours = int(valeurs[0])
-minutes = int(valeurs[1])
-seconds = int(valeurs[2])
+user_time = input("Enter hours, minutes and seconds in the format hh:mm:ss: ").split(":")
+hours = int(user_time[0])
+minutes = int(user_time[1])
+seconds = int(user_time[2])
 
 # Get the alarm_time from user input in the format hh:mm:ss
 alarm_time = input("Enter alarm_time_hours, alarm_time_minutes and alarm_time_seconds in the format hh:mm:ss: ").split(":")
