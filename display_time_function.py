@@ -35,8 +35,9 @@ def display_time(hours, minutes, seconds, alarm_time):
                 if check_alarm_time(alarm_time, hours, minutes, seconds):
                     for _ in range(5):
                         print("ALARM! Time to wake up, Mamie Jeannine!")
+                        time.sleep(1)
                     #break
-                        seconds += 1
+                    seconds += 5
             
                 # Increment the seconds
                 seconds += 1
