@@ -5,6 +5,13 @@ def check_alarm_time(alarm_time, hours, minutes, seconds):
     if (hours == alarm_time[0] and minutes == alarm_time[1] and seconds == alarm_time[2]):
         return True
     return False
+#Function to convert hour to 12 hour format with AM/PM 
+def convert_to_12_hour_format(hours, minutes, seconds):
+    period = "AM" if hours < 12 else "PM"
+    hours = hours % 12
+    if hours == 0:
+        hours = 12
+    return f"{hours:02}:{minutes:02}:{seconds:02} {period}"
 
 # function to get the time from user input in the format hh:mm:ss
 def set_time():
@@ -41,29 +48,26 @@ def set_alarm():
         except ValueError:
             print("Invalid format. Please enter the alarm time in the format hh:mm:ss.")
 
-# Get the current time
-current_time = time.localtime()
-hours = current_time.tm_hour
-minutes = current_time.tm_min
-seconds = current_time.tm_sec
+
 
 # Function to update and display the time
-def display_time(hours, minutes, seconds, alarm_time):
-    try:
+def display_time(hours, minutes, seconds, alarm_time, mode_24h=True):
+   try:
         while True:
-            # Format the time as hh:mm:ss
-            formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"
-        
+           
+            if mode_24h:
+                formatted_time = f"{hours:02}:{minutes:02}:{seconds:02}"
+            else:
+                formatted_time = convert_to_12_hour_format(hours, minutes, seconds)
+            
             # Display the time, overwriting the previous line
             print(formatted_time, end="\r", flush=True)
 
             # Check if the current time matches the alarm time
             if check_alarm_time(alarm_time, hours, minutes, seconds):
-                # show the alarm time 5 seconds
                 for _ in range(5):
-                    print("ALARM! Time to wake up, Mamie Jeannine!")
-                    time.sleep(1)  
-                
+                    print(f"ALARM! Time to wake upMamie Jeannine!", flush=True)
+                    time.sleep(1)
                 # After the alarm, add 5 seconds to the time
                 seconds += 5
 
@@ -87,17 +91,28 @@ def display_time(hours, minutes, seconds, alarm_time):
             # Wait for 1 second before updating the time
             time.sleep(1)
 
-    except KeyboardInterrupt:
+   except KeyboardInterrupt:
         print("\nProgram interrupted. Exiting...")
 
 # Main function to manage the entire program
 def main():
     print("00:00:00")
     hours, minutes, seconds = set_time()  
-    alarm_time = set_alarm()  
+    alarm_time = set_alarm() 
+    
+    while True:
+        mode = input("Choose time display mode (12 for 12-hour format, 24 for 24-hour format): ")
+        if mode == "12":
+            mode_24h = False
+            break
+        elif mode == "24":
+            mode_24h = True
+            break
+        else:
+            print("Invalid choice. Please enter '12' or '24'.") 
 
     # Call function to display and update time
-    display_time(hours, minutes, seconds, alarm_time)
+    display_time(hours, minutes, seconds, alarm_time,mode_24h)
 
 # Start the program
 if __name__ == "__main__":
