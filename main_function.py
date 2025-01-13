@@ -1,5 +1,6 @@
 import time
 
+
 def display_time(time):
     print (f"{time[0]:02}:{time[1]:02}:{time[2]:02} ")
     
@@ -99,10 +100,15 @@ def clock(hours, minutes, seconds, alarm_time, mode_24h=True):
    except KeyboardInterrupt:
         print("\nProgram interrupted. Exiting...")
 
+
+
+
 # Main function to manage the entire program
 def main():
+    
    
-    display_time((1, 0, 0))
+    
+    display_time((0, 0, 0))
     hours, minutes, seconds = set_time()  
     alarm_time = set_alarm() 
     
