@@ -76,20 +76,20 @@ def clock(hours, minutes, seconds, alarm_time, mode_24h=True):
                 # After the alarm, add 5 seconds to the time
                 seconds += 5
 
-            # Increment the seconds
+            
             seconds += 1
 
-            # If seconds reach 60, reset to 0 and increment minutes
+            
             if seconds == 60:
                 seconds = 0
                 minutes += 1
 
-            # If minutes reach 60, reset to 0 and increment hours
+            
             if minutes == 60:
                 minutes = 0
                 hours += 1
 
-            # If hours reach 24, reset to 0 (24-hour clock)
+            
             if hours == 24:
                 hours = 0
 
